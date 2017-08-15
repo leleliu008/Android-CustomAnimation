@@ -92,7 +92,6 @@ public final class Sequent {
      * 设置动画
      *
      * @param animator {@link AnimatorBuilder}
-     * @return
      */
     public Sequent anim(Animator animator) {
         this.animator = animator;
@@ -105,7 +104,6 @@ public final class Sequent {
      *
      * @param viewId
      * @param skipMe 如果viewId是ViewGroup，表示是否也忽略自己
-     * @return
      */
     public Sequent skip(int viewId, boolean skipMe) {
         if (viewId > 0) {
@@ -119,7 +117,6 @@ public final class Sequent {
      *
      * @param viewId   指定的控件的Id
      * @param animator 动画 可以通过{@link AnimatorBuilder}构造一个实例
-     * @return
      */
     public Sequent particular(int viewId, Animator animator) {
         if (viewId > 0) {
@@ -133,7 +130,6 @@ public final class Sequent {
      *
      * @param viewGroupId 指定的容器的Id
      * @param animator    动画 可以通过{@link AnimatorBuilder}构造一个实例
-     * @return
      */
     public Sequent particularChildren(int viewGroupId, Animator animator) {
         if (viewGroupId > 0) {
