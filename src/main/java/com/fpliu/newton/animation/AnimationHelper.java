@@ -11,8 +11,8 @@ import android.view.animation.Animation.AnimationListener;
 /**
  * 转场动画工具
  * 请求确保使用的Theme中有如下配置：
- * <item name="android:windowIsTranslucent">true</item>
- * <item name="android:windowAnimationStyle">@null</item>
+ * &lt;item name="android:windowIsTranslucent"&gt;true&lt;/item&gt;
+ * &lt;item name="android:windowAnimationStyle"&gt;@null&lt;/item&gt;
  */
 public final class AnimationHelper {
 
