@@ -318,6 +318,7 @@ public final class AnimatorBuilder {
 
     public AnimatorBuilder start() {
         animator.start();
+        return this;
     }
 
     private void ensureAnimatorNotNull() {
