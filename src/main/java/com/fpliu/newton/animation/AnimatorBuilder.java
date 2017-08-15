@@ -240,6 +240,12 @@ public final class AnimatorBuilder {
         return this;
     }
 
+    /**
+     * 设置动画时长
+     *
+     * @param duration {@link Animator#DURATION_INFINITE}
+     * @return
+     */
     public AnimatorBuilder duration(int duration) {
         ensureAnimatorNotNull();
         animator.setDuration(duration);
@@ -310,7 +316,7 @@ public final class AnimatorBuilder {
         }
     }
 
-    public void start() {
+    public AnimatorBuilder start() {
         animator.start();
     }
 
