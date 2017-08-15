@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -101,7 +100,6 @@ public final class Sequent {
     public Sequent skip(int viewGroupId) {
         if (viewGroupId > 0) {
             skipSet.add(viewGroupId);
-            Log.d("HY_XX", "skip() viewGroupId = " + viewGroupId);
         }
         return this;
     }
