@@ -166,7 +166,12 @@ public final class Sequent {
                 fetchChildLayouts((ViewGroup) view);
             } else {
                 Boolean skipMe = skipViews.get(view.getId());
-                if (skipMe != null) {
+                if (skipMe == null) {
+                    if (view.getVisibility() == View.VISIBLE) {
+                        view.setVisibility(View.INVISIBLE);
+                        targetList.add(view);
+                    }
+                } else {
                     if (!skipMe) {
                         if (view.getVisibility() == View.VISIBLE) {
                             view.setVisibility(View.INVISIBLE);
