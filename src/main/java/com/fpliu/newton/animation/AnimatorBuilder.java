@@ -25,22 +25,23 @@ public final class AnimatorBuilder {
     private AnimatorBuilder() {
     }
 
-    public static AnimatorBuilder obtain(Activity activity, int targetViewId) {
-        AnimatorBuilder builder = new AnimatorBuilder();
-        builder.targetView = activity.findViewById(targetViewId);
-        return builder;
+    public static AnimatorBuilder obtain() {
+        return new AnimatorBuilder();
     }
 
-    public static AnimatorBuilder obtain(View parent, int targetViewId) {
-        AnimatorBuilder builder = new AnimatorBuilder();
-        builder.targetView = parent.findViewById(targetViewId);
-        return builder;
+    public AnimatorBuilder target(Activity activity, int targetViewId) {
+        targetView = activity.findViewById(targetViewId);
+        return this;
     }
 
-    public static AnimatorBuilder obtain(View targetView) {
-        AnimatorBuilder builder = new AnimatorBuilder();
-        builder.targetView = targetView;
-        return builder;
+    public AnimatorBuilder target(View parent, int targetViewId) {
+        targetView = parent.findViewById(targetViewId);
+        return this;
+    }
+
+    public AnimatorBuilder target(View targetView) {
+        this.targetView = targetView;
+        return this;
     }
 
     public AnimatorBuilder anim(Context context, int animId) {

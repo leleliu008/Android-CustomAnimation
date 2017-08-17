@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class Sequent {
 
@@ -27,8 +29,7 @@ public final class Sequent {
 
     private SparseArray<Boolean> skipViews = new SparseArray<>();
 
-    private SparseArray<Animator> particularAnimators = new SparseArray<>();
-    private SparseArray<Animator> particularChildrenAnimators = new SparseArray<>();
+    private Map<View, Animator> particularAnimators = new HashMap<>();
 
     private int startOffset = DEFAULT_OFFSET;
     private int duration = DEFAULT_DURATION;
@@ -120,7 +121,7 @@ public final class Sequent {
      */
     public Sequent particular(int viewId, Animator animator) {
         if (viewId > 0) {
-            particularAnimators.put(viewId, animator);
+            particularAnimators.put(viewGroup.findViewById(viewId), animator);
         }
         return this;
     }
@@ -133,7 +134,7 @@ public final class Sequent {
      */
     public Sequent particularChildren(int viewGroupId, Animator animator) {
         if (viewGroupId > 0) {
-            particularChildrenAnimators.put(viewGroupId, animator);
+            particular((ViewGroup) this.viewGroup.findViewById(viewGroupId), animator);
         }
         return this;
     }
@@ -142,6 +143,18 @@ public final class Sequent {
         fetchChildLayouts(viewGroup);
         arrangeLayouts(targetList);
         setAnimation();
+    }
+
+    private void particular(ViewGroup viewGroup, Animator animator) {
+        int count = viewGroup.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View view = viewGroup.getChildAt(i);
+            if (view instanceof ViewGroup) {
+                particular((ViewGroup) view, animator);
+            } else {
+                particularAnimators.put(view, animator);
+            }
+        }
     }
 
     private void fetchChildLayouts(ViewGroup viewGroup) {
@@ -208,7 +221,7 @@ public final class Sequent {
 
             int viewId = view.getId();
             if (viewId > 0) {
-                Animator animator = particularAnimators.get(viewId);
+                Animator animator = particularAnimators.get(view);
                 if (animator == null) {
                     if (this.animator == null) {
                         animatorList.add(ObjectAnimator.ofFloat(view, View.ALPHA, 0, 1));
