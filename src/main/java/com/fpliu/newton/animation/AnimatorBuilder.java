@@ -244,12 +244,38 @@ public final class AnimatorBuilder {
     /**
      * 设置动画时长
      *
-     * @param duration {@link Animator#DURATION_INFINITE}
+     * @param duration 必须大于0
      * @return
      */
     public AnimatorBuilder duration(int duration) {
         ensureAnimatorNotNull();
         animator.setDuration(duration);
+        return this;
+    }
+
+    /**
+     * 设置动画重复次数
+     *
+     * @param repeatCount {@link ValueAnimator#INFINITE}
+     * @return
+     */
+    public AnimatorBuilder repeatCount(int repeatCount) {
+        if (animator instanceof ValueAnimator) {
+            ((ValueAnimator) animator).setRepeatCount(repeatCount);
+        }
+        return this;
+    }
+
+    /**
+     * 设置动画执行完一个后，如何重复执行
+     *
+     * @param repeatMode {@link ValueAnimator#RESTART}、{@link ValueAnimator#REVERSE}
+     * @return
+     */
+    public AnimatorBuilder repeatMode(int repeatMode) {
+        if (animator instanceof ValueAnimator) {
+            ((ValueAnimator) animator).setRepeatMode(repeatMode);
+        }
         return this;
     }
 
