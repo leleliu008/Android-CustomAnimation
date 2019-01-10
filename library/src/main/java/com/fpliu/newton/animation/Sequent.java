@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -259,14 +258,14 @@ public final class Sequent {
     }
 
     private void resetAnimation(View view) {
-        ViewCompat.setAlpha(view, 1);
-        ViewCompat.setScaleX(view, 1);
-        ViewCompat.setScaleY(view, 1);
-        ViewCompat.setTranslationX(view, 0);
-        ViewCompat.setTranslationY(view, 0);
-        ViewCompat.setRotation(view, 0);
-        ViewCompat.setRotationY(view, 0);
-        ViewCompat.setRotationX(view, 0);
+        view.setAlpha(1);
+        view.setScaleX(1);
+        view.setScaleY(1);
+        view.setTranslationX(0);
+        view.setTranslationY(0);
+        view.setRotation(0);
+        view.setRotationY(0);
+        view.setRotationX(0);
     }
 
     private ObjectAnimator getStartObjectAnimator(int offset, final View view) {

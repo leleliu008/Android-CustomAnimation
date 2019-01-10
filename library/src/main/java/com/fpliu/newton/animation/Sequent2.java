@@ -5,7 +5,6 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -76,13 +75,13 @@ public final class Sequent2 {
     }
 
     private void resetAnimation(View view) {
-        ViewCompat.setAlpha(view, 1);
-        ViewCompat.setScaleX(view, 1);
-        ViewCompat.setScaleY(view, 1);
-        ViewCompat.setTranslationX(view, 0);
-        ViewCompat.setTranslationY(view, 0);
-        ViewCompat.setRotation(view, 0);
-        ViewCompat.setRotationY(view, 0);
-        ViewCompat.setRotationX(view, 0);
+        view.setAlpha(1);
+        view.setScaleX(1);
+        view.setScaleY(1);
+        view.setTranslationX(0);
+        view.setTranslationY(0);
+        view.setRotation(0);
+        view.setRotationY(0);
+        view.setRotationX(0);
     }
 }
